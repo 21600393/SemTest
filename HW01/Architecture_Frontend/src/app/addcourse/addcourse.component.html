@@ -1,0 +1,43 @@
+<!-- Main container for the Add Course form -->
+<div class="container mt-5">
+  <!-- Heading for the Add Course form -->
+  <h2 class="my-3">Add Course</h2>
+
+  <!-- Form for adding a new course -->
+  <form [formGroup]="addCourseForm" (ngSubmit)="onSubmit()">
+    <!-- Form group for the course name -->
+    <div class="form-group">
+      <label for="name">Course Name:</label>
+      <input type="text" id="name" class="form-control" formControlName="name" />
+      <!-- Display a validation error if the course name is required and the input is dirty -->
+      <small *ngIf="addCourseForm.controls['name'].dirty && addCourseForm.controls['name'].invalid" class="form-text text-danger">
+        Course name is required.
+      </small>
+    </div>
+
+    <!-- Form group for the course duration -->
+    <div class="form-group">
+      <label for="duration">Course Duration:</label>
+      <input type="text" id="duration" class="form-control" formControlName="duration" />
+      <!-- Display a validation error if the course duration is required and the input is dirty -->
+      <small *ngIf="addCourseForm.controls['duration'].dirty && addCourseForm.controls['duration'].invalid" class="form-text text-danger">
+        Course duration is required.
+      </small>
+    </div>
+
+    <!-- Form group for the course description -->
+    <div class="form-group">
+      <label for="description">Course Description:</label>
+      <textarea id="description" class="form-control" rows="4" formControlName="description"></textarea>
+      <!-- Display a validation error if the course description is required and the input is dirty -->
+      <small *ngIf="addCourseForm.controls['description'].dirty && addCourseForm.controls['description'].invalid" class="form-text text-danger">
+        Course description is required.
+      </small>
+    </div>
+
+    <!-- Add Course button to submit the form -->
+    <div class="text-left mt-3">
+      <button type="submit" class="btn btn-primary">Add Course</button>
+    </div>
+  </form>
+</div>

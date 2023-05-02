@@ -1,0 +1,41 @@
+<!-- Main container for the Edit Course form -->
+<div class="container">
+  <!-- Heading for the Edit Course form -->
+  <h2 class="my-3">Edit Course</h2>
+
+  <!-- Form for editing an existing course -->
+  <form [formGroup]="editCourseForm" (ngSubmit)="updateCourse()" class="col-md-8 mx-auto">
+    <!-- Form group for the course name -->
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" class="form-control" formControlName="name" />
+      <!-- Display a validation error if the course name is required and the input is touched -->
+      <div *ngIf="editCourseForm.get('name')?.touched && editCourseForm.get('name')?.invalid" class="text-danger">
+        Name is required.
+      </div>
+    </div>
+
+    <!-- Form group for the course duration -->
+    <div class="form-group">
+      <label for="duration">Duration:</label>
+      <input type="text" id="duration" class="form-control" formControlName="duration" />
+      <!-- Display a validation error if the course duration is required and the input is touched -->
+      <div *ngIf="editCourseForm.get('duration')?.touched && editCourseForm.get('duration')?.invalid" class="text-danger">
+        Duration is required.
+      </div>
+    </div>
+
+    <!-- Form group for the course description -->
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" class="form-control" formControlName="description"></textarea>
+      <!-- Display a validation error if the course description is required and the input is touched -->
+      <div *ngIf="editCourseForm.get('description')?.touched && editCourseForm.get('description')?.invalid" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+
+    <!-- Update Course button to submit the form; it is disabled if the form is not valid -->
+    <button type="submit" class="btn btn-primary" [disabled]="!editCourseForm.valid">Update Course</button>
+  </form>
+</div>

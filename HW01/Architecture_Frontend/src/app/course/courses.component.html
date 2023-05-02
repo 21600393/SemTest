@@ -1,0 +1,55 @@
+<!-- Main container for the course listing -->
+<div class="container">
+  <!-- Heading for the course listing -->
+  <h2 class="my-3">Course Listing</h2>
+
+  <!-- Card container for the table -->
+  <div class="card">
+    <!-- Card body for the table -->
+    <div class="card-body p-0">
+      <!-- Table for displaying courses -->
+      <table class="table table-bordered table-hover">
+        <!-- Table header with column headings -->
+        <thead class="bg-success text-white">
+          <tr>
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <!-- Table body for displaying the course data -->
+        <tbody>
+          <!--
+            Table row for each course in the courses array;
+            apply 'table-light' class to each row,
+            and call onMouseOver and onMouseOut methods when hovering
+          -->
+          <tr *ngFor="let course of courses" class="table-light"
+              (mouseover)="onMouseOver($event)" (mouseout)="onMouseOut($event)">
+            <!-- Display the course name -->
+            <td>{{ course.name }}</td>
+            <!-- Display the course duration -->
+            <td>{{ course.duration }}</td>
+            <!-- Display the course description -->
+            <td>{{ course.description }}</td>
+            <!-- Edit button to navigate to the edit course page -->
+            <td>
+              <button class="btn btn-info btn-sm" [routerLink]="['/editcourse', course.courseId]">Edit</button>
+            </td>
+            <!-- Delete button to delete the course -->
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="deleteCourse(course.courseId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add Course button to navigate to the add course page -->
+  <div class="text-left mt-3">
+    <a routerLink="/addcourse" class="btn btn-primary">Add Course</a>
+  </div>
+</div>
